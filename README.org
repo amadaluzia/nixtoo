@@ -1,0 +1,37 @@
+#+title: Nixtoo
+#+author: Artur Manuel
+
+The proof of concept nobody wants!
+
+** Why did you make this blud
+   Bored, already did my daily Advent of Code, good time to
+   learn more Nix. :^)
+
+** How do I use this?
+   An example flake you could make may look like this:
+   #+begin_src nix
+   {
+     inputs = {
+       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+       nixtoo.url = "git+https://codeberg.org/amadaluzia/nixtoo";
+     };
+
+     outputs = {self, nixpkgs, ...}: let
+       forAllSystems = f:
+         nixpkgs.lib.genAttrs ["x86_64-linux"]
+           (system: f {
+             pkgs = import nixpkgs {inherit system;};
+           });
+     in {
+       packages = forAllSystems ({pkgs}: {
+         default = inputs.nixtoo.lib.gentooSystem {
+           inherit pkgs;
+           system = "x86_64-linux";
+           init = "openrc";
+           flavours = ["desktop"];
+           date = "2024-10-08_10-01";
+         };
+       });
+     };
+   }
+   #+end_src
