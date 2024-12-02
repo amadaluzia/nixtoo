@@ -1,5 +1,6 @@
 #+title: Nixtoo
 #+author: Artur Manuel
+#+options: num:nil toc:nil
 
 ** Why did you make this blud
    Bored, already did my daily Advent of Code, good time to
