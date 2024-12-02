@@ -1,8 +1,6 @@
 #+title: Nixtoo
 #+author: Artur Manuel
 
-The proof of concept nobody wants!
-
 ** Why did you make this blud
    Bored, already did my daily Advent of Code, good time to
    learn more Nix. :^)
